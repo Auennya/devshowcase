@@ -15,6 +15,12 @@ public class Project {
     @JoinColumn(name = "profile_id")
     private Profile profile;
 
+    @Column(name = "upvotes")
+    private Integer upvotes = 0;
+
+    @Column(name = "average_rating")
+    private Double averageRating = 0.0;
+
     // GETTERS E SETTERS
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
@@ -27,4 +33,10 @@ public class Project {
 
     public Profile getProfile() { return profile; }
     public void setProfile(Profile profile) { this.profile = profile; }
+
+    public Integer getUpvotes() { return upvotes; }
+    public void setUpvotes(Integer upvotes) { this.upvotes = upvotes; }
+
+    public Double getAverageRating() { return averageRating; }
+    public void setAverageRating(Double averageRating) { this.averageRating = averageRating; }
 }

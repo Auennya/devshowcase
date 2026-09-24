@@ -1,5 +1,9 @@
 package br.com.ars.devshowcase.repository;
-import org.springframework.data.jpa.repository.JpaRepository;
 
 import br.com.ars.devshowcase.model.Technology;
-public interface TechnologyRepository extends JpaRepository<Technology, Long> {}
+import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.Optional;
+
+public interface TechnologyRepository extends JpaRepository<Technology, Long> {
+    Optional<Technology> findByName(String name);
+}
