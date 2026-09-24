@@ -1,42 +1,39 @@
 package br.com.ars.devshowcase.model;
-
+import java.util.ArrayList;
+import java.util.List;
 import jakarta.persistence.*;
 
 @Entity
 public class Project {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
-    private String name;
+    private String title;
     private String description;
+    private String link;
+    private String technology;
+    private Integer likes = 0;
+    private Double notaMedia = 0.0;
+    private Integer totalFeedbacks = 0;
 
-    @ManyToOne
-    @JoinColumn(name = "profile_id")
-    private Profile profile;
+    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL)
+    private List<Feedback> feedbacks = new ArrayList<>();
 
-    @Column(name = "upvotes")
-    private Integer upvotes = 0;
-
-    @Column(name = "average_rating")
-    private Double averageRating = 0.0;
-
-    // GETTERS E SETTERS
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
-
-    public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
-
+    public String getTitle() { return title; }
+    public void setTitle(String title) { this.title = title; }
     public String getDescription() { return description; }
     public void setDescription(String description) { this.description = description; }
-
-    public Profile getProfile() { return profile; }
-    public void setProfile(Profile profile) { this.profile = profile; }
-
-    public Integer getUpvotes() { return upvotes; }
-    public void setUpvotes(Integer upvotes) { this.upvotes = upvotes; }
-
-    public Double getAverageRating() { return averageRating; }
-    public void setAverageRating(Double averageRating) { this.averageRating = averageRating; }
+    public String getLink() { return link; }
+    public void setLink(String link) { this.link = link; }
+    public String getTechnology() { return technology; }
+    public void setTechnology(String technology) { this.technology = technology; }
+    public Integer getLikes() { return likes; }
+    public void setLikes(Integer likes) { this.likes = likes; }
+    public Double getNotaMedia() { return notaMedia; }
+    public void setNotaMedia(Double notaMedia) { this.notaMedia = notaMedia; }
+    public Integer getTotalFeedbacks() { return totalFeedbacks; }
+    public void setTotalFeedbacks(Integer totalFeedbacks) { this.totalFeedbacks = totalFeedbacks; }
+    public List<Feedback> getFeedbacks() { return feedbacks; }
+    public void setFeedbacks(List<Feedback> feedbacks) { this.feedbacks = feedbacks; }
 }

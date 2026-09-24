@@ -1,5 +1,4 @@
 package br.com.ars.devshowcase.exception;
-
 import java.util.HashMap;
 import java.util.Map;
 import org.springframework.http.HttpStatus;
@@ -11,7 +10,6 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
-    // Quando você mandar nome vazio "" - erro 400 bonitinho
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<Map<String, Object>> handleValidacao(MethodArgumentNotValidException ex) {
         Map<String, String> erros = new HashMap<>();
@@ -24,7 +22,6 @@ public class GlobalExceptionHandler {
         return ResponseEntity.badRequest().body(body);
     }
 
-    // Quando buscar id que não existe - erro 404 bonitinho
     @ExceptionHandler(RecursoNaoEncontradoException.class)
     public ResponseEntity<Map<String, String>> handleNaoEncontrado(RecursoNaoEncontradoException ex) {
         return ResponseEntity.status(HttpStatus.NOT_FOUND)
